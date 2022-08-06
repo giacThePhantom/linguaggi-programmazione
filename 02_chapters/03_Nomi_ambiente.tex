@@ -1,0 +1,66 @@
+\chapter{Nomi e ambiente}
+\section{Nomi}
+Un nome \`e una sequenza di caratteri che denota qualcos altro, nei linguaggi di programmazione sono identificatori e il loro uso permette di indicare all'oggetto denotato.
+In un linguaggio di programmazione i nomi denotabili si dividono in:
+\begin{itemize}
+\item Definiti dall'utente, come variabili, parametri formali, procedure, tipi, tags, costanti e exxezioni.
+\item Primitivi: costanti, operazioni e tipi primitivi.
+\end{itemize}
+L'associazione di un nome all'oggetto denotato \`e chiamata binding. Nomi e oggetti sono differenti: il nome \`e una stringa di caratteri, mentre l'oggetto pu\`o essere
+qualsiasi cosa denotabile, a cui possono essere assegnati pi\`u nomi: "aliasing". Durante l'esecuzione di un programma lo stesso nome pu\`o denotare oggetti divesi.
+\subsection{Binding}
+I binding tra nomi e oggetti possono avvenire a diversi momenti: 
+\begin{itemize}
+\item Fatti per design del linguaggio (i tipi primitivi).
+\item Durante la scrittura del programma, dove vengono definiti, ma non creati fino a che lo spazio in memoria per tale oggetto viene creato. 
+\item Compile time: il compilatore alloca la memoria per tutte quelle strutture dati che possono essere staticamente processate.
+\item Runtime: tutte le associazioni precedentemente non avvenute, come il binding per variabili locali o puntatori a variabili allocate dinamicamente.  
+\end{itemize} 
+\subsection{Gestione dei nomi in memoria}
+Esistono due tipi di gestioni della memoria nel salvataggio dei nomi:
+\begin{itemize}
+\item Statica: tutto avviene prima dell'esecuzione, fatta dal compilatore.
+\item Dinamica: avviene durante l'esecuzione, grazie ad opportune operazioni eseguite a runtime.
+\end{itemize}
+\section{Ambienti}
+Un ambiente \`e l'insieme delle associazioni tra nomi e ogetti denotabili che esistono a runtime in un punto specifico del programma, in uno specifico momento dell'esecuzione. 
+Il processo che crea un associazione in un ambiente \`e chiamato dichiarazione. Come gi\`a detto, in momenti diversi del programma lo stesso nome pu\`o essere associato a 
+oggetti diversi e diversi nomi possono essere associati allo stesso oggetto. 
+\subsection{Blocchi}
+Nei linguaggi di programmazione moderni l'ambiente \`e strutturato in blocchi, ovvero sezioni del programma che contiene dichiarazioni locali a quella regione. L'uso di nomi 
+locali permette migliore chiarezza, ottimizza l'uso di memoria e permette la ricorsione. Blocchi intersecati devono essere per forza essere annidati. Una dichiarazione in un 
+blocco \`e visibile nel blocco e nei blocchi annidati a meno che in questi ultimi ce ne sia un'altra con lo stesso nome che la mascheri. 
+\subsection{Suddivisione dell'ambiente}
+L'ambiente in un blocco pu\`o essere diviso in: 
+\begin{itemize}
+\item Ambiente locale, che contiene tutte le associazioni che avvengono all'entrata del blocco, come paramtri formali e variabili locali 
+\item Ambiente non locale, ovvero tutte le associazioni ereditate da altri blocchi.
+\item Ambiente globale, quella parte dell'ambiente non locale comune a tutti i blocchi come variabili locali esplicitamente dichiarate, dichiarazioni nei blocchi esterni o 
+ereditata da altri moduli.
+\end{itemize}
+\subsection{Operazioni nell'ambiente}
+Nell'ambiente possono essere eseguite le seguenti operazioni:
+\begin{itemize}
+\item Binding;
+\item Utilizzo di un nome;
+\item Disattivazione di un binding a causa della creazione di un altro che lo maschera;
+\item Riattivazionie di un binding all'uscita dal blocco che conteneva la maschera;
+\item Distruzione di un associazione all'uscita dal blocco che conteneva la variabile locale;
+\end{itemize}
+Il periodo di vita di un oggetto pu\`o non corrisponde al periodo di vita di una sua associazione: pu\`o essere pi\`u lunga (passaggio per reference) o pi\`u corta, aliasing
+e distruzione attraverso uno dei due nomi. 
+\section{Scopes}
+Le regole di visibilit\`a sono considerabili come segue: ogni dichiarazione locale \`e visibile in tutti i blocchi annidati a meno che non sia mascherata. Sorge un problema 
+con le funzioni in quanto viene eseguito codice presente in altre aree rispetto a dove \`e stato definito. Per questo motivo si deve fare una scelta tra:
+\begin{itemize}
+\item Static scoping: viene scelta la variabile che include sintatticamente la funzione, ovvero nel blocco che la include testualmente.
+\item Dinamic scoping: viene scelta la variabile nel blocco che viene eseguito immediatamente prima della funzione, ovvero nel blocco pi\`u recentemente attivato e non ancora
+disattivato.
+\end{itemize}
+\subsection{Confronto tra static e dinamic scoping}
+Nello static scoping tutte le informazioni sono incluse nello stesso testo, le associazioni sono derivabili a compile time, sono indipendenti, \`e pi\`u facile da implementare
+e pi\`u efficiente. Nel dinamic scoping le informazioni sono derivate a runtime, risulta spesso in programmi difficili da leggere, pi\`u difficile da implementare e meno 
+efficiente.
+\subsection{Determinare l'ambiente}
+L'ambiente \`e determinato dalle regole di scoping, dalle visibilit\`a di variabili: in molti linguaggi una variabile esiste solo dopo che \`e stata dichiarata, regola che
+va rilassata sulle funzioni e sui tipi per permettere la mutua ricorsione, o grazie a definizioni incomplete.

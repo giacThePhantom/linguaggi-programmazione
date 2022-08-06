@@ -1,0 +1,42 @@
+\chapter{Strutture dati e tipi}
+\section{Tipi}
+Un tipo \`e una collezione di valori omogenei e univocamente definiti collegati a un insieme di operatori su quei valori. Sono determinati dagli specifici linguaggi di 
+programmazione. Sono utilizzati per organizzare le informazioni, riconoscere certi errori e permettere delle ottimizzazioni.
+\subsection{Type system}
+\`E l'insieme dei tipi predefiniti, dei meccanismi che definiscono nuovi tipi e meccanismi di controllo di equivalenza, compatibilit\`a e inferenza, specifica se un tipo \`e
+statico o dinamico. Un sistema \`e type safe se a runtime non ci possono essere errori non rilevati causati da errori di tipo. 
+\subsection{Classificazione}
+Tipi ordinali o discreti: sono booleani, iteri e caratteri, intervalli e enumerazioni, ogni valore ha un predecessore e un successore, possono essere utilizzati come iterazione
+o come indici di un array. Tipi scalari: i tipi ordinali e i reali, hanno una diretta rappresentazione nell'implementazione, non sono composti di aggregazione di altri valori. 
+\subsubsection{Enumerazioni}
+Sono ordinazioni di nuovi valori, rendono i programmi pi\`u facili da leggere. 
+\subsubsection{Intervalli}
+Sono intervalli di valori di un tipo ordinabile, sono rappresentati come il tipo base.
+\section{Tipi strutturati, non scalari}
+\begin{itemize}
+\item Sono una collezione di campi di tipi diversi, selezionati in base al nome. Questo record pu\`o essere variabile in base al numero di campi attivi. 
+\item Array, funzione da un indice scalare a un altro tipo, array di caratteri sono stringhe con particolari operazioni.
+\item Sets, sottinsiemi di un tipo base.
+\item Puntatori, reference a oggetti di altro tipo.
+\end{itemize}
+\subsection{Gestione in memoria dei record}
+Possono essere un insieme di campi salvati sequenzialmente, allinati a parola di confine o non allineati, con maggiore costo di accesso. In un record variabile ci sono 
+possibilit\`a esclusive per ogni record. 
+\subsection{Array}
+Gli array sono collezioni di dati omogenei, possono essere multidimensionali. L'operazione principale \`e la selezione attraverso l'indice di un elemento. Alcuni linguaggi 
+permettono lo slicing, ovvero la divisione dell'array in sottoarray. Gli array multidimensionali sono comunemente salvati in ordine di riga, e gli elementi sono tutti contigui.
+\subsubsection{Localizzare un elemento}
+Sia $A[S_1][S_2][S_3]$ un array multidimensionale, la dimensione di $S_3$ \`e la dimensione del tipo, la dimensione di $S_2=numero\ elementi\ S_3\cdot S_3$, $S_1=numero\ elementi\ S_2\cdot S_2$. Ora un elemento $A[i][j][k]$ in un array che comincia ad $\alpha$ \`e data da $i\cdot S_1+j\cdot S_2+k\cdot S_3+\alpha$.
+\subsubsection{Equivalenza e compatibilit\`a}
+Due tipi sono equivalenti se ogni oggetto di $T$ \`e anche oggetto di $P$ e viceversa, sono compatibili se ogni oggetto $T$ pu\`o essere utilizzato nello stesso contesto di 
+un oggetto di tipo $P$. 
+\section{Polimorfismo}
+Un valore singolo pu\`o avere pi\`u tipi.
+\subsection{Overloading}
+In questo caso lo stesso simbolo ha differenti significati in base al contesto in cui \`e utilizzato, viene risolto a compile time dopo l'inferenza dei tipi.
+\subsection{Polimorfismo parametrico}
+Un valore ha polimorfismo parametrico se il valore ha un infinito possiile numero di tipi, ottenuti grazie all'istanziazione di uno schema generale. \`E una singola definizione
+applicata a tutte le istanze di un tipo generale. Implicito in ML.
+\subsection{Polimorfismo di sottotipo}
+Simile a quello esplicito, ma non tutti i tipi possono essere utilizzati: un valore lo possiede se ha un numero infinito di possibili tipi ottenibili sostituendo per un 
+parametro tutti i sottotipi del tipo dato. 

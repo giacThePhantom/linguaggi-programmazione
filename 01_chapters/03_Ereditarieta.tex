@@ -1,0 +1,31 @@
+\chapter{Ereditariet\`a e polimorfismo}
+Tutte le classi di un sistema object oriented sono legate da una gerarchia di ereditariet\`a definita mediante la parola extends. La sottoclasse eredita tutti i metodi
+e attributi della superclasse. Java supporta solo ereditariet\`a semplice, ovvero una classe pu\`o ereditare da un'unica superclasse.
+\subsubsection{Classe Object}
+Se la parola extends non \`e specificata la classe eredita di default dalla classe Obejct che fornisce dei metodi: public void equals(Object), protected void finalize(), 
+public String toString(). Le estensioni di una classe possono essere strutturali (aggiunta di nuovi attributi) o comportamentali (aggiunta di nuovi metodi o modifica di
+metodi esistenti).
+\subsubsection{Overriding}
+Una sottoclasse pu\`o ridefinire i metodi della sua superclasse attraverso l'overriding. All'interno di un metodo che ne ridefinisce uno della superclasse si pu\`o fare
+riferimento ad esso attraverso il costrutto super. 
+\subsubsection{Costruttori}
+I costruttori non vengono ereditati, all'interno di un costruttore si pu\`o fare riferimento al costruttore della superclasse attraverso super, se non inserito il 
+compilatore inserisce il codice che fa riferimento al compilatore di default senza parametri. 
+\subsubsection{Overloading}
+All'interno di una classe possono esserci metodi con lo stesso nome purch\`e si distinguano per numero o tipo di parametri. Il tipo di ritorno non basta a eliminare 
+l'ambiguit\`a. 
+\section{Costruttori}
+Se per una classe non viene specificato alcun costruttore viene creato in automatico il costruttore vuoto, se ne specifico uno questo non avviene. Una sottoclasse, a
+meno che sia diversamente specificato con super chiama come prima cosa il costruttore della superclasse senza parametri. All'interno di un costruttore si pu\`o chiamare
+un costruttore della stessa classe con this(), a patto che questa sia la prima istruzione del costruttore. 
+\section{Classi astratte}
+Un metodo astratto \`e un metodo per il quale non \`e implementata alcuna istruzione. Una classe astratta \`e tale se contiene almeno un metodo astratto. Entrambi sono 
+definiti tali attraverso la keyword abstract. Non \`e possibile creare istanze di una classe astratta, si necessita di definire una loro sottoclasse che ne implementa
+i metodi astratti. Sono utili per introdurre astrazioni di alto livello.  
+\section{Information hiding}
+La visibilit\`a di metodi e attributi pu\`o essere definita come:\begin{itemize}
+\item public: visibili a tutti, vengono ereditati, 
+\item protected: visibili solo alle sottoclassi, vengono ereditati. 
+\item private: visibili solo nella classe, non visibili nelle sotto classi.
+\item Di default il valore di accesso \`e comune al package. 
+\end{itemize}

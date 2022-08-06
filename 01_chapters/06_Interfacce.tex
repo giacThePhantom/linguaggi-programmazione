@@ -1,0 +1,49 @@
+\chapter{Interfacce}
+Un'interfaccia \`e una classe composta interamente da metodi astratti, senza attributi. Un'interfaccia pu\`o contenere costanti, spesso si usano interfacce completamente
+vuote per taggare classi con speciali propriet\`a. Un'interfaccia pu\`o ereditare da una o pi\`u interfacce. Una classe pu\`o implementare una o pi\`u interfacce e 
+implementarne tutti i metodi astratti a meno che sia astratta. L'interfaccia si limita a definire il comportamento che una classe deve avere. Si utilizza per gestire il
+problema delle multiple inheritance in modo da non rischiare di incorrere in metodi con la stessa firma. Un'interfaccia pu\`o essere utilizzata per definire il tipo 
+di una variabile ma non per creare un oggetto.
+\section{Collections}
+Una collection \`e un oggetto che raggruppa elementi multipli in una singola entit\`a. A differenza degli array gli elementi possono essere eterogenei e la sua lunghezza
+non \`e fissata. Sono utilizzate per immagazzinare, recuperare e traseferire gruppi di dati da un metodo all'altro. Il java collection framework contiene tre tipi di elementi: interfacce per specificare diversi tipi di servizi associati a diversi tipi di collection, potenzialmente associate a diverse strutture dati, implementazioni 
+di specifiche strutture dati di uso comune che implementano le interfacce e algoritmi, codificati in metodi, che implementano operazioni comuni a pi\`u strutture dati. 
+Come per esempio ricerca ordinamento, mescolamento, composizione. Lo stesso metodo pu\`o essere utilizzato in diverse implementazioni. 
+\subsection{Interfacce}
+\begin{enumerate}
+\item Collection, un'arbitraria collezione di elementi.
+\begin{itemize}
+\item Set, collection senza duplicati.
+\begin{itemize}
+\item SortedSet, set su cui \`e definito un ordinamento.
+\end{itemize}
+\item List, collection in sequenza ordinata, accessibili tramite indice, sono ammessi duplicati.
+\item Queue, collection in coda in cui sono ammessi duplicati.
+\begin{itemize}
+\item Deque queue a cui \`e possibile accedere da entrambe le estremit\`a.
+\end{itemize}
+\end{itemize}
+\item Map, una collezione di coppie chiave-valore senza duplicati.
+\begin{itemize}
+\item SortedMap, map su cui \`e definito un ordinamento sulle chiavi. 
+\end{itemize}
+\end{enumerate}
+\subsection{Operazioni base}
+\begin{itemize}
+\item int size();
+\item boolean isEmpty();
+\item boolean contains(Object element); 
+\item boolean add(Object element); (true se la collection \`e cambiata)
+\item boolean remove(Object element); (true se la collection \`e cambiata)
+\item Iterator iterator();
+\end{itemize}
+\subsection{Bulk operation}
+Consentono di effettuare operazioni su pi\`u elementi contemporaneamente.
+\begin{itemize}
+\item boolean containsAll(Collection c); 
+\item boolean addAll(Collection c); (true se la collection \`e cambiata)
+\item boolean removeAll(Collection c); (true se la collection \`e cambiata)
+\item boolean retainAll(Collection c);
+\item void clear();
+\item Object[] toArray();
+\end{itemize}

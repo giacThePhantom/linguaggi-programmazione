@@ -1,0 +1,27 @@
+\chapter{Classi e oggetti, attributi e metodi}
+Gli attributi determinano lo stato degli oggetti instanziati a partire da una determinata classe, il cui valore \`e particolare ad ogni istanza. I metodi definiscono 
+invece il comportamento di tale oggetto, con codice condiviso per tutte le istanze di tale classe. Le istanze di una classe sono oggetti, che contengono un riferimento
+ad un oggetto. Si noti che in java gli oggetti sono accessibili solo per riferimento. 
+\subsubsection{Passaggio di parametri}
+I parametri formati da tipi primitivi sono passati per copia, mentre i parametri costituiti da oggetti, sono passati per copia del riferimento, pertanto gli oggetti sono
+sempre passati per riferimento.
+\subsection{Package e information hiding}
+Attributi e metodi di una classe per cui non \`e stabilita alcuna regola di visibilit\`a sono visibili solo all'interno dello stesso package in cui \`e contenuta la 
+classe. Ogni compilation unit (file .java) contiene classi appartenenti allo stesso package e contiene un'unica classe public e altre private. Il package java.lang
+contiene classi di uso molto comune pertanto vengono importate in automatico. 
+\subsubsection{Attributi costanti}
+\`E possibile creare degli attributi costanti prefissando a essi la keyword final. Le asserzioni (la terminazione di compilazione) sono determinate da un System.exit(1),
+spesso precedute da un output in console. 
+\subsection{Distruttore}
+In java non \`e permesso distruggere esplicitamente gli oggetti, questa operazione \`e compiuta in automatico dal garbage collector, che interviene automaticamente quando
+si rende necessaria della memoria, liberando quella occupata da oggetti la cui referenza non \`e pi\`u attiva. Pu\`o essere esplicitamente attivato attraverso System.gc()
+che di norma non \`e necessario. \`E possibile definire nel metodo finalize azioni da eseguire all'atto della distruzione dell'oggetto. Non \`e un distruttore \`e 
+utilizzato per rilasciare risorse diverse alla distruzione di un oggetto.
+\subsection{Creazione di oggetti}
+I nuovi oggetti sono creati con l'operatore new, che richiede la chiamata di un particolare metodo: il costruttore che alloca la memoria necessaria all'oggetto e 
+inizializza lo spazio allocato. Il costruttore ha lo stesso nome della classe, non indica il tipo di ritorno e non ha return, \`e possibile fare dell'overloading. Di 
+default viene creato un costruttore che si limita ad allocare lo spazio necessario alla memoria. 
+\subsubsection{Tipi array}
+Sono anch'essi tipi riferimento come le classi. Dato un tipo T, un array viene diciarato con T[]. In mancanza di inizializzazione la dichiarazione di un'array non 
+alloca spazio per i suoi elementi. L'allocazione si crea dinamicamente attraverso new T[dimensione]. Se non sono di tipo primitivo, alloca spazio per i riferimenti. 
+System.arraycopy(src, int srcPos, dst, int dstPos, int length) copia length elementi da src a partire da srcPos in dst a partire da dstPos.

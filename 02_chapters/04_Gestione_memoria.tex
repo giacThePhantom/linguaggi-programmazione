@@ -1,0 +1,90 @@
+\chapter{Gestione della memoria}
+Ci sono tre tipi principali per gestire la memoria: 
+\begin{itemize}
+\item Statico, in cui la memoria viene allocata durante la compilazione.
+\item Dinamico, in cui la memoria viene allocata a runtime, si divide in:
+\begin{itemize}
+\item Stack, in cui gli oggetti sono allocati secondo una FIFO.
+\item Heap, in cui ogni oggetto pu\`o essere allocato e disallocato ad ogni momento.
+\end{itemize}
+\end{itemize}
+\section{Allocazione statica}
+Utilizzando l'allocazione statica un oggetto ha un indirizzo assoluto che mantiene per tutta la durata dell'esecuzione.Viene solitamente utilizzata per salvare variabili \\
+globali, variabili locali in assenza di ricorsione, costanti determinate a runtime e tabelle per garbage collection e type-checking. Presenta un problema per la ricorsione, 
+in quanto salvando sempre nello stesso indirizzo i parametri attuali per una funzione questi vengono persi dopo la chiamata ricorsiva.
+\section{Allocazione dinamica}
+\subsection{Stack}
+Per ogni istanza a runtime di un sottoprogramma, come in ogni blocco,  esiste un record di attivazione (frame) che contiene le informazioni dell'istanza. La struttura dati
+naturale per gestire i record \`e una coda LIFO, uno stack pu\`o essere utilizzato anche in linguaggi senza ricorsione per ridurre il consumo di memoria.
+\subsubsection{Record di attivazione}
+Il record di attivazione consiste di tre parti:
+\begin{enumerate}
+\item Puntatori alla catena dinamica.
+\item Variabili locali.
+\item Risultati intermedi.
+\end{enumerate}
+L'implementazione dell'allocazione dinamica di uno stack utilizza una sequenza di chiamate, un prologo, un epilogo e una sequenza di ritorno. L'indirizzo del record di 
+attivazione non \`e conosciuto a compile time, e il suo puntatore punta al record di attivazione del blocco attivo. Le informazioni nel record di attivazione sono accessibili
+grazie ad un offset determinato staticamente, grazie alla somma con l'indirizzo del record di attivazione, operazione compiuta attraverso una sola operazione della macchina.
+\subsubsection{Push e Pop}
+All'entrata in un blocco, viene creato un nuovo linck dinamico (puntatore  al record precedente sullo stack) dal nuovo blocco al blocco precedente, il record di attivazione 
+viene settato a puntare al nuovo record. All'uscita dal blocco viene elimitato il puntatore al record e settato un nuovo record di attivazione alla cima dello stack.
+\subsubsection{Necessit\`a dello stack}
+Per la gestione di blocchi annidati non \`e uno stack, il compilatore pu\`o analizzare tutti i blocchi e allocare memoria per tutte le variabili, causando un maggior consumo di 
+memoria, ma rimanendo pi\`u efficiente non perdendo risorse per la gestione dello stack. 
+\subsection{Heap}
+Lo heap \`e una regione di memoria in cui blocchi e sottoblocchi possono essere allocati e disallocati in momenti arbitrari. Questo processo si rende necessario quando si trova
+un'allocazione di memoria esplicita a runtime, ci sono ogetti di dimensione variabile e il loro tempo di vita non \`e LIFO. La gestione dello heap presenta dei problemi: si 
+necessita di allocare efficientemente lo spazio (bisogna evitare la frammentazione) e tenere conto della velocit\`a di accesso. 
+\subsubsection{Blocchi di grandezza fissa}
+In questo caso lo heap \`e diviso in blocchi di grandezza fissa all'inizio linkati in una free list. Durante l'allocazione uno o pi\`u blocchi vengono eliminati dalla free list
+e nella deallocazione vi sono reinseriti. 
+\subsubsection{Blocchi a grandezza variabile}
+Lo heap contiene inizialmente un blocco singolo. Durante l'allocazione viene ricercato un blocco della dimensione appropriata che viene poi ripristinato al blocco libero 
+durante la deallocazione. 
+\subsubsection{Gestione dello heap}
+\textbf{Frammentazione interna}: se si necessita di allocare uno spazio di dimensione $X$ ma la dimensione del blocco \`e $Y>X$, viene sprecato $Y-X$ spazio.\\
+\textbf{Frammentazione esterna}: lo spazio necessario \`e disponibile ma inaccessibile in quanto diviso in blocchi di dimensione troppo piccola. 
+\subsubsection{Gestione della free list}
+\textbf{Lista singola}: all'inizio esiste un blocco che occupa tutto lo heap ed ad ogni richiesta di allocazione viene ricercato un blocco della dimensione appropriata secondo
+uno dei due possibili paradigmi:
+\begin{itemize}
+\item Best fit: ricercato il blocco pi\`u piccolo che pu\`o contenere l'oggetto. Buon utilizzo della memoria ma pi\`u lento.
+\item First fit: viene ricercato il primo blocco libero. Veloce con pessimo utilizzo della memoria.
+\end{itemize}
+Se il blocco \`e molto pi\`u largo di quanto si necessita \`e diviso in due pezzi e il blocco inutilizzato \`e riagiunto alla free list. L'allocazione \`e lineare nel numero
+dei blocchi liberi. \\
+\textbf{Liste multiple}: che possono essere implementate staticamente; dinamicamente in due modi:
+\begin{itemize}
+\item Buddy system: con $k$ liste con la $k$-esima lista con blocchi di dimensione $2^k$:
+\begin{itemize}
+\item Se la dimensione di $2^k$ \`e richiesta ma non \`e disponibile si alloca un blocco di dimensione $2^{k+1}$ diviso in due.
+\item Quando un blocco di dimensione $2^k$ viene deallocato, se esiste un'altra met\`a libera viengono uniti. 
+\end{itemize}
+\item Sistema di Fibonacci: analogo al Buddy System ma con l'utilizzo della sequenza di Fibonacci. 
+\end{itemize}
+\section{Implementazione delle regole di scoping}
+\subsection{Scoping statico}
+\subsubsection{Catena statica}
+Viene determinato il primo activation record in cui la variabile si trova, l'accesso viene eseguito tramite l'offset con questo record di attivazione. Questo pu\`o essere
+determinato dal link dinamico visto sopra o attraverso un link statico al blocco che contiene il testo del blocco corrente. Se il link dinamico dipende dalla sequenza di 
+esecuzione, il link statico dipende dall'annidamento statico della dichiarazione della funzione. Il link statico \`e determinato dal chiamante che possiede le informazioni
+riguardante l'annidamento statico determinato dal compilatore e il proprio record di attivazione. Se il chiamato \`e automaticamente incluso nel chiamante, questo passa il 
+proprio static pointer al chiamato, altrimenti il puntatore statico viene trovato dopo $k$ passaggi nella catena statica.
+\subsubsection{Display}
+Viene utilizzato per ridurre il costo di far scorrere la catena ad una costante: \`e un array contenente la catena in cui l'i-esimo elemento \`e un puntatore al record di
+attivazione al sottoprogramma a livello di annidamento $i$. Se il sottoprogramma si trova a livello $i$ e l'oggetto in uno scope esterno a livello $h$, questo pu\`o essere
+trovato nel display al livello $i-h$. Quando il chiamante chiama una funzione a livello di nesting $i$ salva il valore di $display[i]$ nel proprio record di attivazione e setta
+il puntatore ad una copia del suo nuovo record di attivazione. Implementazioni moderne raramente utilizzano questo metodo in quanto non si trovano spesso catene statiche pi\`u 
+lunghe di $3$. 
+\subsection{Scoping dinamico}
+L'associazione tra nomi e oggetti dipende dal flusso di controllo a runtime e dall'ordine in cui i sottoprogrammi sono chiamati. Di base l'associazione \`e determinata 
+dall'ultima associazione creata che non \`e stata ancora distrutta. I nomi vengono salvati nel record di attivazione e i nomi vengono chiamati attraverso uno stack. 
+\subsubsection{A-list}
+Le associazioni sono salvate in una struttura apposita gestita come uno stack. \`E semplice da implementare, tutti i nomi sono listati esplicitamente. I costi di gestione sono
+rappresentati dall'accesso uscita di un blocco e il conseguimento inserimento o rimozione da uno stack. Il costo di accesso \`e linare con la profondit\`a della lista.
+\subsubsection{Central table of reference (CRT)}
+La tavola salva tutti i nomi distinti del programma staticamente con accesso in tempo costante o grazie all'utilizzo di funzioni di hash. Ogni nome ha una lista di 
+associazioni: con come primo il pi\`u recente, seguito dagli inattivi. \`E pi\`u complesso di una A-list ma utilizza meno memoria in quanto tutti i nomi sono salvati un'unica
+volta e se sono utilizzati staticamente non sono necessari, il costo di gestione \`e rappresentato dall'entrata e uscita di un blocco che rende necessario la gestione della 
+lista di tutti i nomi presenti nel blocco. Il tempo di accesso \`e costante. 

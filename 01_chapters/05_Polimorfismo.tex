@@ -1,0 +1,13 @@
+\chapter{Polimorfismo}
+Con polimorfismo si intende la capacit\`a di un elemento sintattico a riferirsi a elementi di diverso tipo. 
+\subsection{Principio di sostituzione di Liskov}
+Se S \`e un sottotipo di T, allora le variabili di tipo T in un programma possono essere sostituite con variabili di tipo S senza alterare alcuna propriet\`a desiderabile
+del programma. Pertanto una variabile di tipo T pu\`o riferirsi a oggetti di tipo T o di un suo sottotipo, allo stesso modo per i parametri formali di una funzione. 
+In java il legame tra un oggetto e il suo tipo \`e detto dynamic binding (o lazy/late binding). In presenza di polimorfismo si distingue tra tipo statico, dichiarato a 
+compile time e tipo dinamico, assunto a runtime. In java la chiamata di una funzione dipende dal tipo dinamico di un oggetto e non dal suo tipo statico. Il compilatore
+determina la firma del metodo da eseguire basandosi unicamente sul metodo statico. In caso di overriding la specifica implementazione del metodo la cui firma \`e stata 
+decisa dal compilatore viene scelta basandosi sul metodo dinamico. 
+\subsection{Regole per il binding}
+Chiamato un metodo che dipenda dal tipo dell'oggetto si cerca all'interno della classe del tipo statico dell'oggetto il metodo con la firma pi\`u vicina all'invocazione.
+Successivamente si guarda al tipo dinamico dell'oggetto e si nota se \`e stato fatto l'override di tale metodo scelto. Se s\`i si usa l'implementazione del tipo dinamico.
+In Java le decisioni sono sempre a runtime salvo quando sia possibile decidere univocamente a compile time per metodi private, static e final e costruttori. 

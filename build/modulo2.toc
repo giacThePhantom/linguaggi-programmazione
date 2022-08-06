@@ -1,0 +1,103 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Machines}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}The CPU}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Registers}{3}{subsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.1}Invisible registers}{3}{subsubsection.1.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.2}Visible registers}{4}{subsubsection.1.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.2}Execution of instructions}{4}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Main memory}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Physical machine}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Abstract machines}{4}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Operation of an abstract machine}{4}{subsection.1.4.1}%
+\contentsline {chapter}{\numberline {2}Implementation of a language}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Implementation in software}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Interpreted}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Compiled}{6}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Hybrid implementation}{6}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Comparison between the approaches}{6}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Implementation in firmware}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Formal definition}{7}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Definition of an interpreter}{7}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Definition of compiler}{7}{subsection.2.3.2}%
+\contentsline {chapter}{\numberline {3}Nomi e ambiente}{8}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Nomi}{8}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Binding}{8}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Gestione dei nomi in memoria}{8}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Ambienti}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Blocchi}{9}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Suddivisione dell'ambiente}{9}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Operazioni nell'ambiente}{9}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Scopes}{9}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Confronto tra static e dinamic scoping}{10}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Determinare l'ambiente}{10}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Gestione della memoria}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Allocazione statica}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Allocazione dinamica}{11}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Stack}{11}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}Record di attivazione}{11}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}Push e Pop}{12}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}Necessit\`a dello stack}{12}{subsubsection.4.2.1.3}%
+\contentsline {subsection}{\numberline {4.2.2}Heap}{12}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Blocchi di grandezza fissa}{12}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Blocchi a grandezza variabile}{12}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Gestione dello heap}{12}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Gestione della free list}{12}{subsubsection.4.2.2.4}%
+\contentsline {section}{\numberline {4.3}Implementazione delle regole di scoping}{13}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Scoping statico}{13}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}Catena statica}{13}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}Display}{13}{subsubsection.4.3.1.2}%
+\contentsline {subsection}{\numberline {4.3.2}Scoping dinamico}{13}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}A-list}{14}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}Central table of reference (CRT)}{14}{subsubsection.4.3.2.2}%
+\contentsline {chapter}{\numberline {5}Struttura di controllo}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Espressioni}{15}{section.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.0.1}Notazione infissa}{15}{subsubsection.5.1.0.1}%
+\contentsline {subsubsection}{\numberline {5.1.0.2}Notazione postfissa}{15}{subsubsection.5.1.0.2}%
+\contentsline {subsubsection}{\numberline {5.1.0.3}Notazione prefissa}{15}{subsubsection.5.1.0.3}%
+\contentsline {subsection}{\numberline {5.1.1}Ordine di valutazione}{15}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}Operatori indefiniti}{15}{subsubsection.5.1.1.1}%
+\contentsline {section}{\numberline {5.2}Comandi}{16}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Variabili}{16}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Modelli diversi}{16}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Iterazione}{16}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Ricorsione}{16}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Astrazione dei controlli}{17}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Funzione di ordine superiore}{17}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Regole di binding}{17}{subsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.1}Deep binding}{17}{subsubsection.6.1.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.1.2}Shallow binding}{17}{subsubsection.6.1.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.1.3}Chiusura}{17}{subsubsection.6.1.1.3}%
+\contentsline {section}{\numberline {6.2}Eccezioni}{17}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Implementazione delle eccezioni}{18}{subsection.6.2.1}%
+\contentsline {chapter}{\numberline {7}Strutture dati e tipi}{19}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Tipi}{19}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Type system}{19}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Classificazione}{19}{subsection.7.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.2.1}Enumerazioni}{19}{subsubsection.7.1.2.1}%
+\contentsline {subsubsection}{\numberline {7.1.2.2}Intervalli}{19}{subsubsection.7.1.2.2}%
+\contentsline {section}{\numberline {7.2}Tipi strutturati, non scalari}{19}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Gestione in memoria dei record}{20}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Array}{20}{subsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.2.1}Localizzare un elemento}{20}{subsubsection.7.2.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2.2}Equivalenza e compatibilit\`a}{20}{subsubsection.7.2.2.2}%
+\contentsline {section}{\numberline {7.3}Polimorfismo}{20}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Overloading}{20}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Polimorfismo parametrico}{20}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Polimorfismo di sottotipo}{20}{subsection.7.3.3}%
+\contentsline {chapter}{\numberline {8}Astrazione dei dati}{21}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Lambda calcolo}{22}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Sintassi}{22}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Astrazione}{22}{subsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.1.1}Applicazione}{22}{subsubsection.9.1.1.1}%
+\contentsline {section}{\numberline {9.2}Variabili libere e legate}{22}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Definizione di variabile legata}{22}{subsection.9.2.1}%
+\contentsline {section}{\numberline {9.3}Sostituzione}{23}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Definizione per valore}{23}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Definizione per applicazione}{23}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.3}Definizione per astrazione}{23}{subsection.9.3.3}%
+\contentsline {section}{\numberline {9.4}Equivalenza tra espressioni}{23}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Alfa equivalenza}{23}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Beta riduzione}{23}{subsection.9.4.2}%
+\contentsline {subsubsection}{\numberline {9.4.2.1}Beta equivalenza}{23}{subsubsection.9.4.2.1}%
+\contentsline {subsubsection}{\numberline {9.4.2.2}Forme normali}{23}{subsubsection.9.4.2.2}%

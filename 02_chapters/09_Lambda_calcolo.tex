@@ -1,0 +1,47 @@
+\chapter{Lambda calcolo}
+Il lambda calcolo \`e la formalizzazione matematica del paradigma di programmazione funzionale, viene espresso come $\lambda x.e$, dove $x$ \`e una variabile legata e $e$ un
+espressione. Un espressione del lambda calcolo \`e un nome, una funzione o un applicazione di espressione a espressioni. 
+\section{Sintassi}
+Siano $x$ un identificatore, $e$ un'espressione, allora si pu\`o dire: $e=x$, o $\lambda x.e$  o $e\ e$. 
+\subsection{Astrazione}
+Il processo di astrazione $\lambda x.e$ lega la variabile $x$ nell'espressione $e$. Sostituiendo con $\lambda y$ e tutte le occorrenze di $x$ con $y$ in $e$ la formalizzazione
+non subisce alcuna variazione. 
+\subsubsection{Applicazione}
+L'applicazione \`e il processo di sostituzione di un espressione con un altra senza cattura (si intende cattura il processo di cambio di stato di una variabile da libera a 
+legata). 
+\section{Variabili libere e legate}
+Una variabile $x$ \`e detta legata da $\lambda x.$, \`e libera se non \`e legata a nessun $\lambda$. Ovvero Siano $F_v(e)$ le variabili libere e $B_v(e)$ le variabili legate 
+nell'espressione $e$. Si consideri $x$ un identificatore, $F_v(x)=\{x\}$ e $B_v(x)=\emptyset$, ovvero se un'espressione \`e composta da una sola variabile questa \`e libera.
+$F_v(e_1e_2)=F_v(e_1)\cup F_v(e_2)$ e $B_v(e_1e_2)=B_v(e_1)\cup B_v(e_2)$, ovvero la composizione di due espressioni non cambia lo stato delle loro variabili. 
+\subsection{Definizione di variabile legata}
+$F_v(\lambda x.e)=F_v(e)\backslash\{x\}$ e $B_v(\lambda x.e)=B_v(e)\cup\{x\}$, ovvero l'operatore $\lambda$ di astrazione rimuove una variabile dell'espressione dalle sue 
+variabili libere per aggiungerle alle variabili legate. 
+\section{Sostituzione}
+Si scrive come $e[\frac{e'}{x}]$, che vuole dire: sostituisci $x$ con $e'$. 
+\subsection{Definizione per valore}
+\begin{itemize}
+\item Se $x$ \`e un identificatore $x[\frac{e'}{x}]=e'$.
+\item Se $x\neq y$, $y[\frac{e'}{x}]=y$
+\end{itemize}
+\subsection{Definizione per applicazione}
+$(e_1e_2)[\frac{e'}{x}]=(e_1[\frac{e'}{x}]e_2[\frac{e'}{x}])$.
+\subsection{Definizione per astrazione}
+\begin{itemize}
+\item Se $x\neq y$ e $y\not\in F_v(e')$, $(\lambda y.e)[\frac{e'}{x}]=(\lambda y.e[\frac{e'}{x}])$, metodo semplice per evitare la cattura di $y$ ($e$ sostituita con un 
+espressione che non dipende da $y$).
+\item Se $x=y$, $(\lambda y.e)[\frac{z}{x}]=(\lambda y.e)$, in quanto sostituire la variabile legata da $\lambda$ non cambia nulla. 
+\item Se $x\neq y$ e $y\in F_v(e')$, per evitare cattura si deve cambiare il nome della variabile legata da $\lambda$, in quanto una funzione non dipende dal nome del parametro
+formale, in questo modo non ci sono fenomeni di aliasing tra variabili libere in $e'$ e variabili legate in $\lambda y.$.
+\end{itemize}
+\section{Equivalenza tra espressioni}
+\subsection{Alfa equivalenza}
+Due espressioni $e_1$ ed $e_2$ si dicono equivalenti quando differiscono solo per il nome di variabili legate, ovvero data una variabile $y$ non presente in $e$,  $\lambda x.e\equiv \lambda x.e[\frac{y}{x}]$ in quanto cambia $\lambda x$ in $\lambda y$ e tutte le occorrenze di $x$ in $e$ con $y$. Due espressioni sono $\alpha$-equivalenti se una si 
+ottiene dall'altra sostituendo una sua parte con una $\alpha$-equivalente. 
+\subsection{Beta riduzione}
+Si intende con beta riduzione il processo di semplificazione delle funzioni, ovvero $(\lambda x.e)e'=e[\frac{e'}{x}]$ in presenza di pi\`u espressioni riducibili c'\`e 
+confluenza. La beta riduzione introduce una relazione tra espressioni non simmetrica. Pertanto non \`e una relazione di equivalenza.
+\subsubsection{Beta equivalenza}
+\`E la chiusura transitiva e riflessiva della beta riduzione. Ovvero $e_1=_\beta e_2$ allora esiste una catena di riduzioni che da $e_1$ porta a $e_2$. 
+\subsubsection{Forme normali}
+\`E un espressione che non contiene redex e alla quale pertanto non si possono avere beta riduzioni. Una beta riduzione pu\`o terminare in una forma normale o continuare all'
+infinito. 

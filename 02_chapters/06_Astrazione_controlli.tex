@@ -1,0 +1,25 @@
+\chapter{Astrazione dei controlli}
+\section{Funzione di ordine superiore}
+Dei linguaggi permettono il passaggio di funzioni come parametro o il ritorno di funzioni per un'altra funzione. Per gestire l'ambiente di questi casi si pu\`o usare un 
+puntatore al record di attivazione nello stack nel caso di funzioni come parametri. Nel caso di funzioni come risultato si deve mantenere un record di attivazione della funzione
+esterno allo stack. 
+\subsection{Regole di binding}
+Quando una funzione \`e passata come parametro questo crea una reference tra il nome del parametro formale e il parametro attuale. L'ambiente non locale utlilzzato dipende 
+dal tipo di binding utilizzato.
+\subsubsection{Deep binding}
+In questo caso viene utilizzato l'ambiente esistente al momento della creazione del link, utilizzato sempre in caso di scoping statico.
+\subsubsection{Shallow binding}
+In questo caso viene l'ambiente esistente al momento della chiamata, pu\`o essere utilizzato con lo scoping dinamico. 
+\subsubsection{Chiusura}
+Sia il link al codice della funzione che del suo ambiente sono passati come parametro, la procedura passata come parametro alloca il suo record di attivazione e considera
+il puntatore sulla catena statica della chiusura. In caso di utiilizzo di chiusura si perdono le propriet\`a LIFO dello stack, pertanto non esiste deallocazione automatica, 
+i record di attivazione vengono salvati nello heap con catene statiche o dinamiche che li connettono e quando necessario viene chiamato un garbage collector. 
+\section{Eccezioni}
+Vengono utilizzate quando si riscontra un problema che rende impossibile continuare la computazione, si esce pertanto dal blocco, si passano i dati con un jump e si ritorna
+il controllo al punto di attivazione pi\`u recente. I record di attivazione non pi\`u necessari sono deallocati e le risorse non pi\`u necessarie sono liberate. Le eccezioni 
+si basano su due costrutti: la dichiarazione del gestore delle eccezionie il comando che genera l'eccezione. Se l'eccezione non \`e gestita dalla funzione corrente questa 
+termina e l'eccezione \`e generata ancora alla funzione chiamante, alla fine si trova il gestore dell'eccezione o uno di default. I frame corrispondenti sono rimossi dallo stack 
+e i valori sono ripristinati. Ogni routine contiene un handler nascosto che ripristina i valori e propaga l'eccezione. 
+\subsection{Implementazione delle eccezioni}
+All'inizio di ogni blocco protetto viene inserita sullo stack del chiamante, quando viene generata si rimuove il chiamante dallo stack e si controlla se \`e giusto, altrimenti
+si ripete. \`E inefficiente se non si trova un handler, una soluzione migliore \`e la tavola degli indirizzi. 

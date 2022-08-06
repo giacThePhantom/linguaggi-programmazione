@@ -1,0 +1,52 @@
+\chapter{Machines}
+A computer is composed of at least the following:
+\begin{itemize}
+\item A processor (CPU) which executes the machine instructions, and which can move data from and into memory.
+\item A main memory (RAM) that stores data and program (as sequences of machine insructions), it is fast but volatile.
+\item Mass storage, slower than the RAM but persistant.
+\item Peripheral for I/O.
+\end{itemize}
+The different components are connected by a bus, a series of electrical connections that is used to transmit machine instructiones and data between the CPU and the RAM and for input
+and ouput of data through mass storage devices. This represent the basis of the Von Neumann architecture.
+\section{The CPU}
+The processor obtains the machine instructions from the memory and executes them. It is composed by:
+\begin{itemize}
+\item a control part which obtains and executes instructions
+\item an operative part  (ALU), which executes arithmetic and logic instructions. Modern CPUs also jave a floating arithmetic part (FPU).
+\item registers.
+\end{itemize}
+\subsection{Registers}
+Registers can be divided in two main categories. 
+\subsubsection{Invisible registers}
+Cannot be accessed directly by machine instructions, they are:
+\begin{itemize}
+\item Address Register (AR), which is the address to access the bus,
+\item Data Register (DR), which is the data to read or write.
+\end{itemize}
+\subsubsection{Visible registers}
+They are mentioned by machine instructions, and they are:
+\begin{itemize}
+\item Program Counter (PC) or Instruction Pointer (IP), which is the address of the next machine instruction to execute,
+\item Status Register (SR) or Flag register (F), which are the flags describing the result of an operation of the ALU and the state of the machine.
+\item Several registers for data and addresses.
+\end{itemize}
+\subsection{Execution of instructions}
+When the CPU needs to execute an instruction it read it (fetch), it copies the program counter into the address register, then it transer the data addressed in the addres register 
+from the RAM to the data register (DR), it saves the data register in an invisible register and increment the program counter. After that the CPU decode the instruction and execute it. 
+The instruction can modify the address register, read the data register, modify the program counter, etc. The CPU cycles round always this way, usualli executing machine instructions 
+sequentially, which are specified in the machine language (LM).
+\section{Main memory}
+According to Von Neumann model the same memory may contain both data and instruction. It is accessed via bus, it is composed by a set of cells (or locations) 8 bits long (longer in modern machines). To access the memory the address to be accessed is loaded in the address register, then is signaled if the operation is of read or write. For the former the data that is read will be in the data register, for the latter the data is loaded to be written in the data register.
+\section{Physical machine}
+A computer is a physical machine designed for executing programs, written in a language that it can understand and execute. The language can be the same for different machines. The execution of a program is a continuous cycle of fetch, decode, load, execute, save implemented in hardware by the CPU, for this to happen is necessary to have an algorithm that can understand and execute the machine language.
+\section{Abstract machines}
+The algorithm that executes a program can also be implemented via software by an abstract machine, a collection of algorithms and data structures. In the same way of a physical machine each abstract one is associated to a language. 
+\subsection{Operation of an abstract machine}
+If we name $\mathcal{M_L}$ an abstract machine that can undestand and execute the language $\mathcal{L}$, to exexute a program this machine must:
+\begin{itemize}
+\item execute elementary operation (like the ALU),
+\item control the sequence of execution such as non sequential operations like jumps and cycles (control the program counter),
+\item transer data through memory,
+\item organize memory.
+\end{itemize}
+The execution cycle is similar to the one of a CPU but implemented in software.

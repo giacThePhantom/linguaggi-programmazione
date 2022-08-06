@@ -1,0 +1,41 @@
+\chapter{Implementation of a language}
+Suppose to have an abstract machine $\mathcal{M_L}$ that understands the machine language $L$. Every abstract machine can understand only one language, but a language can be understood
+by different machines. To implement the language $\mathcal{L}$ means to realize an abstract machine $\mathcal{M_L}$ that can execute programs written in this language. The implementation
+can be done via hardware, software or firmware.
+\section{Implementation in software}
+There are two implement $\mathcal{M_L}$ in software, meaning you need it to run on a host machine ($\mathcal{MO_{LO}}$): interpreted or compiled.
+\subsection{Interpreted}
+By this approach there is a program written in $\mathcal{LO}$ that understands and executes $\mathcal{L}$ and implements the cycle fetch, decode, load, execute and save. This program
+called the interpreter translates from $\mathcal{LO}$ to $\mathcal{L}$ instruction by instruction.
+\subsection{Compiled}
+By this approach there is a program that can translate other programs from $\mathcal{L}$ to $\mathcal{LO}$. This program is called the compiler which translate the entire program before
+execution and can be executed from a different machine.
+\subsection{Hybrid implementation}
+By this approach there is a compiler that translates the program into an intermediate language ($\mathcal{LI}$). This new program is then interpreted by a $\mathcal{MO_{LO}}$ program
+written in $\mathcal{LI}$. Depending on the differences between $\mathcal{LI}$ and $\mathcal{LO}$ it is said that an implementation is mainly compilative (like C) or mainly interpretive
+(like Java).
+\subsection{Comparison between the approaches}
+The purely interpretive approach has a less efficient implementation of $\mathcal{M_L}$ but it is more flexible and portable and debugging is simpler with interpretation at run-time.
+The purely compilative has a more efficient implementation of $\mathcal{M_L}$ but more complex due to the difference between the languages and debugging is usually harder.
+\section{Implementation in firmware}
+It is the intermediate implementation between hardware and software, in which the abstract machine is inplemented as a microinterpreter and the program cycle is implemented using 
+microinstruction invisible to normal users. The data structures and algorithms are realized as microprograms. This is more flexible than a pure hardware implementation.
+\section{Formal definition}
+A program can be seen as a function written in the language $\mathcal{L}$: $P^\mathcal{L}:\mathcal{D}\rightarrow\mathcal{D}$. If the program is $P^\mathcal{L}(i)=o$, $i\in\mathcal{D}$ is
+the input, $o\in\mathcal{D}$ is the output. Interpreters and compilers are program whose input and ouput are other programs.
+\subsection{Definition of an interpreter}
+An interpreter for a language $\mathcal{L}$ written in language $\mathcal{LO}$ implements an abstract machine $\mathcal{M_L}$ and is the function:
+\begin{equation}
+\mathcal{I_L^{LO}}:(\mathcal{PR^L}\times\mathcal{D})\rightarrow\mathcal{D}
+\end{equation}
+Where $\mathcal{PR^L}$ is the set of programs $\mathcal{P^L}$ written in the language $\mathcal{L}$. So $\forall i\in\mathcal{D},\mathcal{I_L^{LO}}(\mathcal{P^L},i)=\mathcal{P^L}(i)$ 
+meaning that for any input the interpreter applied to the program and the input returns the same result as the program applied to the input. If $\mathcal{P^L}(i)$ is calculated by 
+the abstract machine $\mathcal{M_L}$, $\mathcal{I_L^{LO}}(\mathcal{P^L},i)$ is calculated by $\mathcal{MO_{LO}}$.
+\subsection{Definition of compiler}
+A compiler from the language $\mathcal{L}$ to the language $\mathcal{LO}$ written in language $\mathcal{LA}$, which implements $\mathcal{M_L}$ on $\mathcal{MO_{LO}}$ transforms a program
+$\mathcal{P^L}\in \mathcal{PR^L}$ into a program $\mathcal{P^{L=}}\in \mathcal{PR^{LO}}$. It is described by the function:
+\begin{equation}
+\mathcal{C_{L,LO}^{LA}}: \mathcal{PR^L}\rightarrow \mathcal{PR^{LO}}
+\end{equation}
+Meaning that $\forall i\in D: \mathcal{P_C^{LO}}=\mathcal{C_{L,LO}^{LA}}(\mathcal{P^L})\Rightarrow \mathcal{P_C^{LO}}(i)=\mathcal{P^L}(i)$, that describes the fact that for any input $i$,
+the compiled program applied to $i$ returns the same result as the non compiled program applied to $i$. $\mathcal{P^L}(i)$ is calculated by $\mathcal{M_L}$, $\mathcal{P^{LO}_C}(i)$ is calculated by $\mathcal{MO_{LO}}$ and the compiled program $\mathcal{C^{LA}_{L,LO}}(\mathcal{P^L})$ is calculated by $\mathcal{MA}$

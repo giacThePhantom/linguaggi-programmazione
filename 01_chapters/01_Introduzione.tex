@@ -1,0 +1,24 @@
+\chapter{Introduzione}
+\section{Richiami di C++}
+\subsection{Modello di memoria}
+La memoria \`e suddivisa in segmenti, il text, dove viene salvato il codice eseguibile, non scrivibile, lo stack e la heap.
+\subsubsection{Lo stack}
+Nello stack sono salvate le variabili allocate staticamente, le funzioni, tutte le variabili allocate in maniera indipendente dal programma. Lo stack cresce e decresce in
+base alle necessit\`a del programma, il contesto di ogni funzione viene salvata in questa area di memoria. Lo spazio necessario viene automaticamente allocato e liberato dal
+programma stesso. Se lo stack cresce troppo e si scontra con la heap si genera un fatal error che causa il termine del programma.
+\subsection{Gli array}
+Gli array sono collezioni di oggetti di tipo omogeneo salvate sequenzialmente nello stack. La dimensione dell'array deve essere dichiarata all'inizio del programma e non pu\`o 
+essere cambiata. Durante l'esecuzione non c'e alcun controllo sugli indici.
+\subsection{Scope delle variabili}
+Le variabili globali sono delle variabili visibili in ogni contesto, vanno evitate a causa dei side-effects, possono essere sovrascritte da variabili locali con lo stesso nome. 
+In java non esistono variabili globali. Il principio dell'information hiding permette di rendere il codice pi\`u leggibile rendendo tutte le variabili locali alle funzioni. 
+Supportato dal principio di Parna secondo cui chi crea, implementa e utilizza deve conoscere solo le istruzioni a lui strettamente necessarie.
+\subsection{I puntatori}
+I puntatori sono delle strutture che contengono l'indirizzo di memoria di variabili, permettono di allocare vettori a run time di lunghezza decisa in quel momento, o per
+passare parametri che varranno cambiati anche all'esterno della funzione. L'operatore delete \`e necessario per liberare la memoria in questo modo, ma per questo si deve 
+prestare attenzione a mantenere salvati i puntatori alle zone salvate, altrimenti si generano dei memori leak.
+\section{Cenni storici al java}
+Il java viene introdotto per superare dei problemi del C++: la gestione della memoria: esiste un costrutto che permette di liberare automaticamente la memoria nell'heap quando 
+non viene utilizzata, elimina l'aritmetica dei puntatori, controlla le dimensioni degli array e introduce una migliore gestione delle stringhe. Aiutando in questo modo a 
+scrivere codice pi\`u robusto. Inoltre sposa quasi completamente il paradigma object oriented. In java l'eseguibile generato dal compilatore viene interpretato successivamente
+da una virtual machine, rendendo molto pi\`u semplice la portabilit\`a.	

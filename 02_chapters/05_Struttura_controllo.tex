@@ -1,0 +1,30 @@
+\chapter{Struttura di controllo}
+\section{Espressioni}
+Le espressioni sono entit\`a sintattiche la cui valutazione produce un valore o non termina.
+\subsubsection{Notazione infissa}
+Necessita la conoscenza delle regole di precedenza e dell'associativit\`a, necessario l'uso di parentesi spesso la sua valutazione non \`e immediata.
+\subsubsection{Notazione postfissa}
+Non necessita regole di precedenza, associativit\`a o di parentesi. La valutazione avviene come uno stack: si legge un valore e lo si pone sullo stack, se tale valore \`e un 
+operatore lo si applica ai simboli sulla cima dello stack, li si poppano e li si sostituisce con il risultato. Se l'input non \`e vuoto si ripete.
+\subsubsection{Notazione prefissa}
+Simile a quella postfissa ma necessita di un contatore del numero di operandi.
+\subsection{Ordine di valutazione}
+Le valutazioni sono rappresentate internamente da alberi che il compilatore utilizza per produrre codice che valuta l'espressione. L'ordine di valutazione \`e importante a causa
+di effetti collaterali, finite arithmetic, operatori indefiniti e ottimizzazione. 
+\subsubsection{Operatori indefiniti}
+\textbf{Short circuit evaluation}: o lazy evaluation in cui gli operandi sono valutati solo se non \`e gi\`a stato possibile definire univocamente il risultato dell'espresisone.\\\textbf{Eager evaluation}: un tipo di valutazione in cui tutti gli operandi sono valutati prima di essere passati all'operatore. 
+\section{Comandi}
+Sono entit\`a sintattiche che non hanno necessariamente un risultato: possono avere dei side effects.
+\section{Variabili}
+Le variabili nei linguaggi imperativi sono dei contenitori di valori con un nome che possono essere cambiati attraverso un comando come l'assegnamento.
+\subsection{Modelli diversi}
+Nei liguaggi funzionali una variabile denota un valore che non pu\`o essere modificato, mentre nei linguaggi logici pu\`o essere modificata solo attraverso istantiazione, 
+nei linguaggi ad oggetti una variabile \`e una reference ad un oggetto, simile ad un puntatore di cui non si pu\`o accedere direttamente al valore. 
+\section{Iterazione}
+L'iterazione pu\`o essere indeterminata con cicli con controlli logici o determinata con controllo numerico.
+\section{Ricorsione}
+Una funzione ricorsiva \`e definita in termini di s\`e stessa, del tutto simile all'induzione matematica. La ricorsione pu\`o esistere in ogni linguaggio che permette alle 
+funzioni di chiamare s\`e stesse e une gestione dinamica della memoria. Ogni funzione ricorsiva pu\`o essere espressa in termini di iterazione e viceversa. La ricorsione pu\`o
+essere ottimizzata per essere efficiente come l'iterazione con la tail recursion, in cui la chiamata ricorsiva \`e l'ultimo elelmento della funzione, in quanto in questo modo 
+\`e necessario un solo record di attivazione. 
+
